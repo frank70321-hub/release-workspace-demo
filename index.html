@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive web QA and workflow integration workspace." />
+    <title>Yeh I. | Delivery Proof</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell" id="top">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Release workspace home"><span>YI</span> Release workspace</a>
+        <nav class="mode-switcher" aria-label="Demo modes">
+          <button class="mode-tab is-active" type="button" data-mode="release" aria-pressed="true">Release QA</button>
+          <button class="mode-tab" type="button" data-mode="workflow" aria-pressed="false">Workflow integration</button>
+        </nav>
+        <span class="sample-label">Independent product demo</span>
+      </header>
+
+      <section class="workspace">
+        <aside class="sidebar">
+          <p class="workspace-kicker">PROJECT</p>
+          <h1>Checkout<br />release</h1>
+          <p class="sidebar-copy">A focused workspace for release checks, issue handoff, and workflow boundaries.</p>
+          <div class="sidebar-status"><i></i><span>Review active</span></div>
+          <p class="sidebar-foot">React · TypeScript · workflow validation</p>
+        </aside>
+
+        <section class="workbench">
+          <div class="workbench-head">
+            <div><p class="workspace-kicker" id="view-label">RELEASE READINESS</p><h2 id="view-title">Can this build ship?</h2></div>
+            <div class="build-stamp"><span>BUILD</span><strong>RC-042</strong></div>
+          </div>
+
+          <div id="release-view" class="mode-view">
+            <div class="metric-grid" aria-label="Release metrics">
+              <article><p>Critical paths</p><strong>04</strong><span class="metric-good">tracked</span></article>
+              <article><p>Regression scope</p><strong>12</strong><span>checks</span></article>
+              <article><p>Open blockers</p><strong id="blocker-count">01</strong><span class="metric-warn">needs review</span></article>
+              <article class="decision-metric"><p>Release state</p><strong id="release-decision">HOLD</strong><span id="release-summary">ready to validate</span></article>
+            </div>
+            <div class="board-grid">
+              <article class="panel">
+                <div class="panel-title"><div><p>Verification pass</p><h3>Release checks</h3></div><span id="check-progress">Ready to run</span></div>
+                <div class="checklist" aria-label="Release check results">
+                  <div class="check-row" data-release-result><span class="check-mark">01</span><span><b>Checkout completion</b><small>Primary transaction path</small></span><em>Queued</em></div>
+                  <div class="check-row" data-release-result><span class="check-mark">02</span><span><b>Failure response</b><small>API error is visible and recoverable</small></span><em>Queued</em></div>
+                  <div class="check-row" data-release-result><span class="check-mark">03</span><span><b>Regression replay</b><small>Known broken path retested</small></span><em>Queued</em></div>
+                  <div class="check-row" data-release-result><span class="check-mark">04</span><span><b>Handoff record</b><small>Scope and residual risk captured</small></span><em>Queued</em></div>
+                </div>
+                <div class="run-action"><button type="button" id="run-release-checks">Run release checks</button><span>4 critical paths</span></div>
+              </article>
+              <article class="panel issue-panel">
+                <div class="panel-title"><div><p>Issue record</p><h3>One clear blocker</h3></div><span class="pill pill-hold">HOLD</span></div>
+                <div class="issue-card">
+                  <div class="issue-id"><span>BUG-184</span><span>Checkout</span></div>
+                  <h4>Invalid address should not advance the flow.</h4>
+                  <p>Expected: visible field feedback, no confirmation state, no duplicate request.</p>
+                  <div class="issue-meta"><span>Reproducible</span><span>Owner: frontend</span></div>
+                </div>
+                <div class="handoff"><span>HANDOFF NOTE</span><p>Release only when the error path is verified in the same build.</p></div>
+              </article>
+            </div>
+          </div>
+
+          <div id="workflow-view" class="mode-view is-hidden">
+            <div class="metric-grid" aria-label="Workflow metrics">
+              <article><p>Incoming events</p><strong id="event-count">00</strong><span>this session</span></article>
+              <article><p>Accepted</p><strong id="accepted-count">00</strong><span class="metric-good">validated</span></article>
+              <article><p>Stopped early</p><strong id="stopped-count">00</strong><span class="metric-warn">safe boundary</span></article>
+              <article><p>Latest state</p><strong id="workflow-state">READY</strong><span id="workflow-status">select an event</span></article>
+            </div>
+            <div class="board-grid workflow-grid">
+              <article class="panel action-panel">
+                <div class="panel-title"><div><p>Event routing</p><h3>Send an event</h3></div><span class="pill pill-blue">REVIEW</span></div>
+                <p class="panel-intro">Different inputs should not receive the same treatment.</p>
+                <div class="event-actions" aria-label="Workflow example events">
+                  <button type="button" data-workflow-event="valid-update"><span class="event-symbol good-symbol">+</span><span><b>Valid update</b><small>Validate and queue</small></span></button>
+                  <button type="button" data-workflow-event="invalid-id"><span class="event-symbol bad-symbol">!</span><span><b>Malformed ID</b><small>Stop before processing</small></span></button>
+                  <button type="button" data-workflow-event="duplicate-submission"><span class="event-symbol hold-symbol">=</span><span><b>Duplicate request</b><small>Keep one for review</small></span></button>
+                </div>
+              </article>
+              <article class="panel history-panel">
+                <div class="panel-title"><div><p>Trace record</p><h3>Event history</h3></div><span id="history-count">0 entries</span></div>
+                <ul id="workflow-history" aria-live="polite"><li class="empty-history">No event has crossed the boundary yet.</li></ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+      <footer><span>Web QA · React · TypeScript · API integration</span><span>Independent product demo</span></footer>
+    </main>
+  </body>
+</html>
