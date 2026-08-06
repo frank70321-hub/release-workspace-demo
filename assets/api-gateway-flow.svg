@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI API Gateway request and accounting flow</title>
+  <desc id="desc">A customer request passes through API key validation, the FastAPI gateway, OpenAI, PostgreSQL-backed credits, and usage logging.</desc>
+  <rect width="1600" height="900" fill="#0d171b"/>
+  <text x="96" y="110" fill="#79d2c0" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">IMPLEMENTATION FLOW</text>
+  <text x="96" y="178" fill="#f2f5f4" font-family="Arial, sans-serif" font-size="54" font-weight="700">AI API Gateway</text>
+  <text x="96" y="224" fill="#9eb0b5" font-family="Arial, sans-serif" font-size="24">Authenticated requests, usage accounting, and controlled model access.</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="96" y="340" width="250" height="178" rx="6" fill="#15252b" stroke="#34515a" stroke-width="2"/>
+    <text x="128" y="386" fill="#79d2c0" font-size="18" font-weight="700">01 / CUSTOMER</text>
+    <text x="128" y="432" fill="#ffffff" font-size="27" font-weight="700">API request</text>
+    <text x="128" y="474" fill="#a9b8bc" font-size="20">ak_live_... key</text>
+
+    <rect x="430" y="340" width="304" height="178" rx="6" fill="#f4f7f6" stroke="#cbd7d7" stroke-width="2"/>
+    <text x="462" y="386" fill="#176f61" font-size="18" font-weight="700">02 / CONTROL</text>
+    <text x="462" y="432" fill="#142126" font-size="27" font-weight="700">FastAPI gateway</text>
+    <text x="462" y="474" fill="#586a70" font-size="20">Key + account validation</text>
+
+    <rect x="818" y="340" width="282" height="178" rx="6" fill="#15252b" stroke="#34515a" stroke-width="2"/>
+    <text x="850" y="386" fill="#79d2c0" font-size="18" font-weight="700">03 / MODEL</text>
+    <text x="850" y="432" fill="#ffffff" font-size="27" font-weight="700">OpenAI response</text>
+    <text x="850" y="474" fill="#a9b8bc" font-size="20">Token usage returned</text>
+
+    <rect x="1184" y="302" width="320" height="252" rx="6" fill="#19272b" stroke="#ba4b4c" stroke-width="2"/>
+    <text x="1216" y="350" fill="#ef8586" font-size="18" font-weight="700">04 / ACCOUNTING</text>
+    <text x="1216" y="396" fill="#ffffff" font-size="27" font-weight="700">PostgreSQL</text>
+    <text x="1216" y="438" fill="#a9b8bc" font-size="20">Credit wallet</text>
+    <text x="1216" y="474" fill="#a9b8bc" font-size="20">Usage log</text>
+    <text x="1216" y="510" fill="#a9b8bc" font-size="20">Transaction record</text>
+
+    <path d="M346 429H410" stroke="#79d2c0" stroke-width="4"/>
+    <path d="M399 418L414 429L399 440" fill="none" stroke="#79d2c0" stroke-width="4"/>
+    <path d="M734 429H798" stroke="#79d2c0" stroke-width="4"/>
+    <path d="M787 418L802 429L787 440" fill="none" stroke="#79d2c0" stroke-width="4"/>
+    <path d="M1100 429H1164" stroke="#ef8586" stroke-width="4"/>
+    <path d="M1153 418L1168 429L1153 440" fill="none" stroke="#ef8586" stroke-width="4"/>
+
+    <rect x="96" y="674" width="1408" height="112" rx="6" fill="#101d21" stroke="#2c4249"/>
+    <text x="128" y="718" fill="#79d2c0" font-size="17" font-weight="700">BOUNDARIES VERIFIED</text>
+    <text x="128" y="758" fill="#d8e1e1" font-size="21">Hashed customer keys · suspended-account rejection · credit checks · usage-based deduction · environment-only provider secret</text>
+  </g>
+</svg>

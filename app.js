@@ -10,8 +10,6 @@ const issueState = document.querySelector('#issue-state');
 const handoffNote = document.querySelector('#handoff-note');
 const releaseView = document.querySelector('#release-view');
 const workflowView = document.querySelector('#workflow-view');
-const viewLabel = document.querySelector('#view-label');
-const viewTitle = document.querySelector('#view-title');
 const workflowStatus = document.querySelector('#workflow-status');
 const workflowState = document.querySelector('#workflow-state');
 const workflowHistory = document.querySelector('#workflow-history');
@@ -25,6 +23,7 @@ function completeReleaseChecks() {
     row.classList.add('is-passed');
     row.querySelector('em').textContent = 'Passed';
   });
+
   checkProgress.textContent = '4 / 4 passed';
   blockerCount.textContent = '00';
   blockerSummary.textContent = 'cleared';
@@ -41,9 +40,27 @@ function completeReleaseChecks() {
 }
 
 const eventOutcomes = {
-  'valid-update': { label: 'Valid update', state: 'ACCEPTED', detail: 'Validated and queued for review.', className: 'accepted', accepted: true },
-  'invalid-id': { label: 'Malformed ID', state: 'REJECTED', detail: 'Stopped before processing.', className: 'rejected', stopped: true },
-  'duplicate-submission': { label: 'Duplicate request', state: 'HELD', detail: 'One action retained for review.', className: 'held', stopped: true },
+  'valid-update': {
+    label: 'Valid update',
+    state: 'ACCEPTED',
+    detail: 'Validated and queued for review.',
+    className: 'accepted',
+    accepted: true,
+  },
+  'invalid-id': {
+    label: 'Malformed ID',
+    state: 'REJECTED',
+    detail: 'Stopped before processing.',
+    className: 'rejected',
+    stopped: true,
+  },
+  'duplicate-submission': {
+    label: 'Duplicate request',
+    state: 'HELD',
+    detail: 'One action retained for review.',
+    className: 'held',
+    stopped: true,
+  },
 };
 
 const totals = { events: 0, accepted: 0, stopped: 0 };
@@ -51,17 +68,20 @@ const totals = { events: 0, accepted: 0, stopped: 0 };
 function addWorkflowHistory(eventName) {
   const outcome = eventOutcomes[eventName];
   if (!outcome) return;
+
   workflowHistory.querySelector('.empty-history')?.remove();
   totals.events += 1;
   totals.accepted += outcome.accepted ? 1 : 0;
   totals.stopped += outcome.stopped ? 1 : 0;
+
   eventCount.textContent = String(totals.events).padStart(2, '0');
   acceptedCount.textContent = String(totals.accepted).padStart(2, '0');
   stoppedCount.textContent = String(totals.stopped).padStart(2, '0');
   historyCount.textContent = `${totals.events} ${totals.events === 1 ? 'entry' : 'entries'}`;
   workflowState.textContent = outcome.state;
-  workflowState.className = outcome.className;
+  workflowState.className = `pill ${outcome.className}`;
   workflowStatus.textContent = outcome.detail;
+
   const row = document.createElement('li');
   const detail = document.createElement('span');
   const state = document.createElement('span');
@@ -72,17 +92,23 @@ function addWorkflowHistory(eventName) {
   workflowHistory.prepend(row);
 }
 
-runReleaseChecks.addEventListener('click', completeReleaseChecks);
-document.querySelectorAll('[data-workflow-event]').forEach((button) => button.addEventListener('click', () => addWorkflowHistory(button.dataset.workflowEvent)));
-document.querySelectorAll('[data-mode]').forEach((button) => button.addEventListener('click', () => {
-  const workflowMode = button.dataset.mode === 'workflow';
-  document.querySelectorAll('[data-mode]').forEach((tab) => {
-    const active = tab === button;
-    tab.classList.toggle('is-active', active);
-    tab.setAttribute('aria-pressed', String(active));
+runReleaseChecks?.addEventListener('click', completeReleaseChecks);
+
+document.querySelectorAll('[data-workflow-event]').forEach((button) => {
+  button.addEventListener('click', () => addWorkflowHistory(button.dataset.workflowEvent));
+});
+
+document.querySelectorAll('[data-mode]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const workflowMode = button.dataset.mode === 'workflow';
+    document.querySelectorAll('[data-mode]').forEach((tab) => {
+      const active = tab === button;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-pressed', String(active));
+    });
+    releaseView.classList.toggle('is-hidden', workflowMode);
+    workflowView.classList.toggle('is-hidden', !workflowMode);
   });
-  releaseView.classList.toggle('is-hidden', workflowMode);
-  workflowView.classList.toggle('is-hidden', !workflowMode);
-  viewLabel.textContent = workflowMode ? 'WORKFLOW INTEGRATION' : 'RELEASE READINESS';
-  viewTitle.textContent = workflowMode ? 'What should happen to this input?' : 'Can this build ship?';
-}));
+});
+
+document.querySelector('#copyright-year').textContent = `© ${new Date().getFullYear()}`;

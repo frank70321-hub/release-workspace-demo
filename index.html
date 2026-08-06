@@ -3,66 +3,170 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Technical case study for release QA, defect reporting, and workflow validation." />
-    <title>Yeh I. | Delivery Proof</title>
+    <meta name="description" content="Full-stack product engineering case studies across React, TypeScript, APIs, data, integrations, and release verification." />
+    <title>Yeh I. | Product Engineering</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
-    <main class="app-shell" id="top">
-      <header class="topbar">
-        <a class="brand" href="#top" aria-label="Release workspace home"><span>YI</span> Release workspace</a>
-        <nav class="mode-switcher" aria-label="Demo modes">
-          <button class="mode-tab is-active" type="button" data-mode="release" aria-pressed="true">Release QA</button>
-          <button class="mode-tab" type="button" data-mode="workflow" aria-pressed="false">Workflow integration</button>
-        </nav>
-        <span class="sample-label">Technical case study</span>
-      </header>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Yeh I. Product Engineering home">
+        <span class="brand-mark">YI</span>
+        <span>Yeh I. / Product Engineering</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#delivery">Delivery</a>
+      </nav>
+      <a class="header-action" href="#contact">Discuss a project</a>
+    </header>
 
-      <section class="workspace">
-        <aside class="sidebar">
-          <p class="workspace-kicker">PROJECT</p>
-          <h1>Checkout<br />release</h1>
-          <p class="sidebar-copy">A working release board for checks, blocker evidence, and workflow decisions.</p>
-          <div class="sidebar-status"><i></i><span>Review active</span></div>
-          <p class="sidebar-foot">React · TypeScript · workflow validation</p>
-        </aside>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">INDEPENDENT FULL-STACK ENGINEER</p>
+          <h1 id="hero-title">Full-stack product engineering for difficult existing systems.</h1>
+          <p class="hero-summary">I take ownership of unfinished features, broken production flows, and integrations that cross frontend, backend, data, and release boundaries.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#work">View selected work</a>
+            <a class="text-action" href="#contact">Start with the affected workflow <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="hero-proof" aria-label="Engineering coverage">
+          <div class="proof-lead">
+            <span>DELIVERY RANGE</span>
+            <strong>One owner from first technical decision to verified handoff.</strong>
+          </div>
+          <dl>
+            <div><dt>Product interfaces</dt><dd>React · Next.js · TypeScript</dd></div>
+            <div><dt>APIs and data</dt><dd>FastAPI · Node.js · PostgreSQL</dd></div>
+            <div><dt>Connected systems</dt><dd>Auth · payments · CRM · AI</dd></div>
+            <div><dt>Release confidence</dt><dd>Failure paths · regression · deployment</dd></div>
+          </dl>
+        </div>
+      </section>
 
-        <section class="workbench">
-          <div class="workbench-head">
-            <div><p class="workspace-kicker" id="view-label">RELEASE READINESS</p><h2 id="view-title">Can this build ship?</h2></div>
-            <div class="build-stamp"><span>BUILD</span><strong>RC-042</strong></div>
+      <section class="work-intro" id="work" aria-labelledby="work-title">
+        <p class="eyebrow">SELECTED WORK</p>
+        <div>
+          <h2 id="work-title">Three inspectable examples, each built around a real engineering decision.</h2>
+          <p>Self-owned implementations and a clearly labeled demonstration. No invented client outcomes.</p>
+        </div>
+      </section>
+
+      <article class="case case-light" aria-labelledby="gateway-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">01 / SELF-OWNED IMPLEMENTATION</p>
+            <h2 id="gateway-title">AI API Gateway</h2>
+          </div>
+          <p class="case-lede">Controlled model access with customer keys, credit accounting, and a complete usage record.</p>
+        </div>
+        <figure class="case-media gateway-media">
+          <img src="assets/api-gateway-flow.svg" alt="Architecture flow from customer API request through a FastAPI gateway, OpenAI, and PostgreSQL accounting" />
+        </figure>
+        <div class="case-detail-grid">
+          <section>
+            <h3>The engineering problem</h3>
+            <p>A customer-facing AI endpoint needs more than a provider call. Access, account status, available credits, provider usage, and the final transaction must agree before the response is considered complete.</p>
+          </section>
+          <section>
+            <h3>Implementation decisions</h3>
+            <ul>
+              <li>Issue customer keys once and store only their hash.</li>
+              <li>Reject inactive keys and suspended accounts before provider work.</li>
+              <li>Convert token usage into credits and record the transaction.</li>
+              <li>Keep the provider secret in environment configuration.</li>
+            </ul>
+          </section>
+          <section class="case-stack">
+            <h3>System</h3>
+            <p>FastAPI · PostgreSQL / Supabase · OpenAI Responses API · Render</p>
+            <span>API and data integration</span>
+          </section>
+        </div>
+      </article>
+
+      <article class="case case-dark" aria-labelledby="planet-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">02 / SELF-OWNED IMPLEMENTATION</p>
+            <h2 id="planet-title">Planet Console</h2>
+          </div>
+          <p class="case-lede">A local-first command center for reconciling many engineering task returns without removing the human decision point.</p>
+        </div>
+        <figure class="case-media planet-media">
+          <img class="planet-desktop" src="assets/planet-console-workflow.png" alt="Planet Console desktop overview showing linked workflow clusters and operational state" />
+          <img class="planet-mobile" src="assets/planet-console-mobile.png" alt="Planet Console responsive mobile overview" />
+        </figure>
+        <div class="case-detail-grid">
+          <section>
+            <h3>The engineering problem</h3>
+            <p>Batch task results can be matched, missing, blocked, or unsafe to continue. The interface has to preserve those distinctions and produce a useful next packet without silently executing work.</p>
+          </section>
+          <section>
+            <h3>Implementation decisions</h3>
+            <ul>
+              <li>Model dispatch, return, reconciliation, and continuation as separate states.</li>
+              <li>Keep blocked and human-decision results out of automatic continuation.</li>
+              <li>Make complex workflow state readable across spatial and narrow layouts.</li>
+              <li>Verify visual changes with desktop and mobile evidence.</li>
+            </ul>
+          </section>
+          <section class="case-stack">
+            <h3>System</h3>
+            <p>React 19 · TypeScript · React Three Fiber · Three.js · Vite</p>
+            <span>Product workflow and interface</span>
+          </section>
+        </div>
+      </article>
+
+      <article class="case case-demo" aria-labelledby="release-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">03 / ENGINEERING DEMONSTRATION</p>
+            <h2 id="release-title">Checkout Release Workspace</h2>
+          </div>
+          <p class="case-lede">A small interactive model of the release question that matters: can the normal path and the failure path ship together?</p>
+        </div>
+
+        <section class="release-demo" id="release-demo" aria-label="Interactive checkout release demonstration">
+          <div class="demo-topline">
+            <div><span>BUILD</span><strong>RC-042</strong></div>
+            <div class="demo-mode-switcher" aria-label="Demonstration modes">
+              <button class="mode-tab is-active" type="button" data-mode="release" aria-pressed="true">Release decision</button>
+              <button class="mode-tab" type="button" data-mode="workflow" aria-pressed="false">Input boundary</button>
+            </div>
           </div>
 
           <div id="release-view" class="mode-view">
             <div class="metric-grid" aria-label="Release metrics">
-              <article><p>Critical paths</p><strong>04</strong><span class="metric-good">tracked</span></article>
-              <article><p>Regression scope</p><strong>12</strong><span>checks</span></article>
+              <article><p>Critical paths</p><strong>04</strong><span>tracked</span></article>
               <article><p>Open blockers</p><strong id="blocker-count">01</strong><span id="blocker-summary" class="metric-warn">needs review</span></article>
-              <article class="decision-metric"><p>Release state</p><strong id="release-decision">HOLD</strong><span id="release-summary">ready to validate</span></article>
+              <article class="decision-metric"><p>Release state</p><strong id="release-decision">HOLD</strong><span id="release-summary">validation required</span></article>
             </div>
-            <div class="board-grid">
-              <article class="panel">
-                <div class="panel-title"><div><p>Verification pass</p><h3>Release checks</h3></div><span id="check-progress">Ready to run</span></div>
-                <div class="checklist" aria-label="Release check results">
+            <div class="demo-grid">
+              <section class="demo-panel">
+                <div class="panel-title"><div><p>VERIFICATION PASS</p><h3>Release checks</h3></div><span id="check-progress">Ready to run</span></div>
+                <div class="checklist">
                   <div class="check-row" data-release-result><span class="check-mark">01</span><span><b>Checkout completion</b><small>Primary transaction path</small></span><em>Queued</em></div>
-                  <div class="check-row" data-release-result><span class="check-mark">02</span><span><b>Failure response</b><small>API error is visible and recoverable</small></span><em>Queued</em></div>
+                  <div class="check-row" data-release-result><span class="check-mark">02</span><span><b>Failure response</b><small>Error remains visible and recoverable</small></span><em>Queued</em></div>
                   <div class="check-row" data-release-result><span class="check-mark">03</span><span><b>Regression replay</b><small>Known broken path retested</small></span><em>Queued</em></div>
                   <div class="check-row" data-release-result><span class="check-mark">04</span><span><b>Handoff record</b><small>Scope and residual risk captured</small></span><em>Queued</em></div>
                 </div>
                 <div class="run-action"><button type="button" id="run-release-checks">Run release checks</button><span>4 critical paths</span></div>
-              </article>
-              <article class="panel issue-panel">
-                <div class="panel-title"><div><p>Issue record</p><h3 id="issue-title">One clear blocker</h3></div><span id="issue-state" class="pill pill-hold">HOLD</span></div>
+              </section>
+              <section class="demo-panel issue-panel">
+                <div class="panel-title"><div><p>ISSUE RECORD</p><h3 id="issue-title">One clear blocker</h3></div><span id="issue-state" class="pill pill-hold">HOLD</span></div>
                 <div class="issue-card">
-                  <div class="issue-id"><span>BUG-184</span><span>Checkout</span></div>
+                  <span>BUG-184 / CHECKOUT</span>
                   <h4>Invalid address should not advance the flow.</h4>
                   <p>Expected: visible field feedback, no confirmation state, no duplicate request.</p>
-                  <div class="issue-meta"><span>Reproducible</span><span>Owner: frontend</span></div>
                 </div>
                 <div class="handoff"><span>HANDOFF NOTE</span><p id="handoff-note">Release only when the error path is verified in the same build.</p></div>
-              </article>
+              </section>
             </div>
           </div>
 
@@ -70,28 +174,82 @@
             <div class="metric-grid" aria-label="Workflow metrics">
               <article><p>Incoming events</p><strong id="event-count">00</strong><span>this session</span></article>
               <article><p>Accepted</p><strong id="accepted-count">00</strong><span class="metric-good">validated</span></article>
-              <article><p>Stopped early</p><strong id="stopped-count">00</strong><span class="metric-warn">safe boundary</span></article>
-              <article><p>Latest state</p><strong id="workflow-state">READY</strong><span id="workflow-status">select an event</span></article>
+              <article><p>Stopped early</p><strong id="stopped-count">00</strong><span class="metric-warn">controlled</span></article>
             </div>
-            <div class="board-grid workflow-grid">
-              <article class="panel action-panel">
-                <div class="panel-title"><div><p>Event routing</p><h3>Send an event</h3></div><span class="pill pill-blue">REVIEW</span></div>
-                <p class="panel-intro">Different inputs should not receive the same treatment.</p>
-                <div class="event-actions" aria-label="Workflow example events">
-                  <button type="button" data-workflow-event="valid-update"><span class="event-symbol good-symbol">+</span><span><b>Valid update</b><small>Validate and queue</small></span></button>
-                  <button type="button" data-workflow-event="invalid-id"><span class="event-symbol bad-symbol">!</span><span><b>Malformed ID</b><small>Stop before processing</small></span></button>
-                  <button type="button" data-workflow-event="duplicate-submission"><span class="event-symbol hold-symbol">=</span><span><b>Duplicate request</b><small>Keep one for review</small></span></button>
+            <div class="demo-grid workflow-grid">
+              <section class="demo-panel action-panel">
+                <div class="panel-title"><div><p>EVENT ROUTING</p><h3>Send an input</h3></div><span id="workflow-state" class="pill pill-blue">READY</span></div>
+                <p class="panel-intro" id="workflow-status" aria-live="polite">Different inputs should not receive the same treatment.</p>
+                <div class="event-actions">
+                  <button type="button" data-workflow-event="valid-update"><span>+</span><span><b>Valid update</b><small>Validate and queue</small></span></button>
+                  <button type="button" data-workflow-event="invalid-id"><span>!</span><span><b>Malformed ID</b><small>Stop before processing</small></span></button>
+                  <button type="button" data-workflow-event="duplicate-submission"><span>=</span><span><b>Duplicate request</b><small>Hold one action</small></span></button>
                 </div>
-              </article>
-              <article class="panel history-panel">
-                <div class="panel-title"><div><p>Trace record</p><h3>Event history</h3></div><span id="history-count">0 entries</span></div>
-                <ul id="workflow-history" aria-live="polite"><li class="empty-history">No event has crossed the boundary yet.</li></ul>
-              </article>
+              </section>
+              <section class="demo-panel history-panel">
+                <div class="panel-title"><div><p>TRACE RECORD</p><h3>Event history</h3></div><span id="history-count">0 entries</span></div>
+                <ul id="workflow-history" aria-live="polite"><li class="empty-history">No input has crossed the boundary yet.</li></ul>
+              </section>
             </div>
           </div>
         </section>
+
+        <div class="case-detail-grid">
+          <section>
+            <h3>What it demonstrates</h3>
+            <p>The same canonical state drives blocker count, release decision, check results, and handoff text. A successful path cannot leave a contradictory hold state behind.</p>
+          </section>
+          <section>
+            <h3>Boundary behavior</h3>
+            <p>Valid, malformed, and duplicate inputs receive distinct terminal classifications and remain visible in the trace record.</p>
+          </section>
+          <section class="case-stack">
+            <h3>System</h3>
+            <p>Semantic HTML · CSS · Native JavaScript</p>
+            <span>Interactive reference implementation</span>
+          </section>
+        </div>
+      </article>
+
+      <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
+        <p class="eyebrow">CAPABILITIES</p>
+        <h2 id="capabilities-title">Useful where product work crosses boundaries.</h2>
+        <div class="capability-grid">
+          <article><span>01</span><h3>Product features</h3><p>React and Next.js interfaces, account flows, dashboards, forms, and state-heavy journeys.</p></article>
+          <article><span>02</span><h3>APIs and data</h3><p>Typed endpoints, PostgreSQL-backed state, authentication, access rules, and usage records.</p></article>
+          <article><span>03</span><h3>Integrations</h3><p>Payments, CRM, analytics, AI providers, webhooks, retries, and failure handling.</p></article>
+          <article><span>04</span><h3>Release recovery</h3><p>Production diagnosis, focused repair, regression checks, deployment, and rollback notes.</p></article>
+        </div>
       </section>
-      <footer><span>Web QA · React · TypeScript · API integration</span><span>Engineering case study</span></footer>
+
+      <section class="delivery" id="delivery" aria-labelledby="delivery-title">
+        <div class="delivery-heading">
+          <p class="eyebrow">DELIVERY</p>
+          <h2 id="delivery-title">A clear path through ambiguous work.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><div><h3>Inspect</h3><p>Read the current system and reproduce the affected workflow.</p></div></li>
+          <li><span>02</span><div><h3>Decide</h3><p>Identify the boundary that changes the outcome and define acceptance.</p></div></li>
+          <li><span>03</span><div><h3>Implement</h3><p>Make the focused change across the layers the result actually requires.</p></div></li>
+          <li><span>04</span><div><h3>Verify</h3><p>Check normal and failure paths, then return a release-ready handoff.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">START WITH THE SYSTEM</p>
+        <h2 id="contact-title">Send the affected workflow, repository or staging link, and expected result.</h2>
+        <p>I will identify the first technical decision and turn it into a scoped delivery path.</p>
+        <div class="contact-actions">
+          <a class="primary-action" href="https://www.upwork.com/freelancers/~01944f1fbb4e712837">Open Upwork profile</a>
+          <a class="text-action" href="https://github.com/frank70321-hub">Review GitHub profile <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <span>Yeh I. / Product Engineering</span>
+      <span>React · TypeScript · APIs · Data · Release</span>
+      <span id="copyright-year"></span>
+    </footer>
   </body>
 </html>
