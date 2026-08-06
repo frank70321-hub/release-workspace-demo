@@ -1,6 +1,6 @@
-# Release Workspace Demo
+# Release QA and Workflow Case Study
 
-An interactive product demo for release verification and workflow-boundary handling.
+An interactive engineering case study for release verification and workflow-boundary handling.
 
 ## Included surfaces
 
@@ -13,4 +13,4 @@ Open `index.html` in a modern browser. The site has no build step, dependencies,
 
 ## Scope
 
-This is an independent product demo built with HTML, CSS, and browser JavaScript. It does not represent a client engagement or production deployment.
+This reference implementation is built with HTML, CSS, and browser JavaScript. It shows the release and workflow decisions I use in engineering delivery and is not presented as a client project.

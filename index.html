@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Interactive web QA and workflow integration workspace." />
+    <meta name="description" content="Technical case study for release QA, defect reporting, and workflow validation." />
     <title>Yeh I. | Delivery Proof</title>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
@@ -16,14 +17,14 @@
           <button class="mode-tab is-active" type="button" data-mode="release" aria-pressed="true">Release QA</button>
           <button class="mode-tab" type="button" data-mode="workflow" aria-pressed="false">Workflow integration</button>
         </nav>
-        <span class="sample-label">Independent product demo</span>
+        <span class="sample-label">Technical case study</span>
       </header>
 
       <section class="workspace">
         <aside class="sidebar">
           <p class="workspace-kicker">PROJECT</p>
           <h1>Checkout<br />release</h1>
-          <p class="sidebar-copy">A focused workspace for release checks, issue handoff, and workflow boundaries.</p>
+          <p class="sidebar-copy">A working release board for checks, blocker evidence, and workflow decisions.</p>
           <div class="sidebar-status"><i></i><span>Review active</span></div>
           <p class="sidebar-foot">React · TypeScript · workflow validation</p>
         </aside>
@@ -38,7 +39,7 @@
             <div class="metric-grid" aria-label="Release metrics">
               <article><p>Critical paths</p><strong>04</strong><span class="metric-good">tracked</span></article>
               <article><p>Regression scope</p><strong>12</strong><span>checks</span></article>
-              <article><p>Open blockers</p><strong id="blocker-count">01</strong><span class="metric-warn">needs review</span></article>
+              <article><p>Open blockers</p><strong id="blocker-count">01</strong><span id="blocker-summary" class="metric-warn">needs review</span></article>
               <article class="decision-metric"><p>Release state</p><strong id="release-decision">HOLD</strong><span id="release-summary">ready to validate</span></article>
             </div>
             <div class="board-grid">
@@ -53,14 +54,14 @@
                 <div class="run-action"><button type="button" id="run-release-checks">Run release checks</button><span>4 critical paths</span></div>
               </article>
               <article class="panel issue-panel">
-                <div class="panel-title"><div><p>Issue record</p><h3>One clear blocker</h3></div><span class="pill pill-hold">HOLD</span></div>
+                <div class="panel-title"><div><p>Issue record</p><h3 id="issue-title">One clear blocker</h3></div><span id="issue-state" class="pill pill-hold">HOLD</span></div>
                 <div class="issue-card">
                   <div class="issue-id"><span>BUG-184</span><span>Checkout</span></div>
                   <h4>Invalid address should not advance the flow.</h4>
                   <p>Expected: visible field feedback, no confirmation state, no duplicate request.</p>
                   <div class="issue-meta"><span>Reproducible</span><span>Owner: frontend</span></div>
                 </div>
-                <div class="handoff"><span>HANDOFF NOTE</span><p>Release only when the error path is verified in the same build.</p></div>
+                <div class="handoff"><span>HANDOFF NOTE</span><p id="handoff-note">Release only when the error path is verified in the same build.</p></div>
               </article>
             </div>
           </div>
@@ -90,7 +91,7 @@
           </div>
         </section>
       </section>
-      <footer><span>Web QA · React · TypeScript · API integration</span><span>Independent product demo</span></footer>
+      <footer><span>Web QA · React · TypeScript · API integration</span><span>Engineering case study</span></footer>
     </main>
   </body>
 </html>

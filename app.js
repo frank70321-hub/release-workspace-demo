@@ -3,7 +3,11 @@ const runReleaseChecks = document.querySelector('#run-release-checks');
 const releaseDecision = document.querySelector('#release-decision');
 const releaseSummary = document.querySelector('#release-summary');
 const blockerCount = document.querySelector('#blocker-count');
+const blockerSummary = document.querySelector('#blocker-summary');
 const checkProgress = document.querySelector('#check-progress');
+const issueTitle = document.querySelector('#issue-title');
+const issueState = document.querySelector('#issue-state');
+const handoffNote = document.querySelector('#handoff-note');
 const releaseView = document.querySelector('#release-view');
 const workflowView = document.querySelector('#workflow-view');
 const viewLabel = document.querySelector('#view-label');
@@ -23,9 +27,15 @@ function completeReleaseChecks() {
   });
   checkProgress.textContent = '4 / 4 passed';
   blockerCount.textContent = '00';
+  blockerSummary.textContent = 'cleared';
+  blockerSummary.className = 'metric-good';
   releaseDecision.textContent = 'GO';
   releaseDecision.className = 'accepted';
   releaseSummary.textContent = 'handoff ready';
+  issueTitle.textContent = 'Blocker verified';
+  issueState.textContent = 'PASSED';
+  issueState.className = 'pill pill-pass';
+  handoffNote.textContent = 'The error path passed in build RC-042. This blocker is cleared for release.';
   runReleaseChecks.textContent = 'Release checks complete';
   runReleaseChecks.disabled = true;
 }
