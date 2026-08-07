@@ -64,9 +64,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--teal-light); ou
 .hero h1 { max-width: 840px; margin: 0; font-size: 4.5rem; line-height: 0.98; letter-spacing: 0; }
 .hero-summary { max-width: 720px; margin: 32px 0 0; color: #49575c; font-size: 1.16rem; }
 .hero-actions, .contact-actions { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin-top: 38px; }
-.paid-proof { display: flex; gap: 14px; align-items: center; width: fit-content; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); }
+.paid-proof { display: flex; gap: 14px; align-items: center; width: fit-content; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); text-decoration: none; }
 .paid-proof strong { color: var(--teal); font-size: 1.45rem; line-height: 1; }
 .paid-proof span { max-width: 310px; color: var(--muted); font-size: 0.75rem; }
+.paid-proof:hover span { color: var(--ink); }
 .primary-action { display: inline-flex; min-height: 46px; align-items: center; padding: 0 18px; color: #fff; background: var(--teal); font-size: 0.82rem; font-weight: 780; text-decoration: none; }
 .primary-action:hover { background: #075e53; }
 .text-action { font-size: 0.82rem; font-weight: 760; text-decoration: none; }
