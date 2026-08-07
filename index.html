@@ -33,10 +33,6 @@
             <a class="primary-action" href="#work">View selected work</a>
             <a class="text-action" href="#contact">Start with the affected workflow <span aria-hidden="true">→</span></a>
           </div>
-          <div class="paid-proof" aria-label="Paid engagement proof">
-            <strong>5.0</strong>
-            <span>client rating on a completed paid iOS QA engagement</span>
-          </div>
         </div>
         <div class="hero-proof" aria-label="Engineering coverage">
           <div class="proof-lead">
@@ -55,15 +51,82 @@
       <section class="work-intro" id="work" aria-labelledby="work-title">
         <p class="eyebrow">SELECTED WORK</p>
         <div>
-          <h2 id="work-title">Four inspectable examples, from paid delivery to full-stack implementation.</h2>
-          <p>See the workflow, the technical decision, and the handoff behind each result.</p>
+          <h2 id="work-title">Four inspectable examples of implementation, verification, and delivery.</h2>
+          <p>Start with the system boundary and product decision. Paid client validation appears as supporting evidence, not as the limit of the engineering work.</p>
         </div>
       </section>
+
+      <article class="case case-light" aria-labelledby="gateway-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">01 / API AND DATA IMPLEMENTATION</p>
+            <h2 id="gateway-title">AI API Gateway</h2>
+          </div>
+          <p class="case-lede">Controlled model access with customer keys, credit accounting, and a complete usage record.</p>
+        </div>
+        <figure class="case-media gateway-media">
+          <img src="assets/api-gateway-flow.svg" alt="Architecture flow from customer API request through a FastAPI gateway, OpenAI, and PostgreSQL accounting" />
+        </figure>
+        <div class="case-detail-grid">
+          <section>
+            <h3>The engineering problem</h3>
+            <p>A customer-facing AI endpoint needs more than a provider call. Access, account status, available credits, provider usage, and the final transaction must agree before the response is considered complete.</p>
+          </section>
+          <section>
+            <h3>Implementation decisions</h3>
+            <ul>
+              <li>Issue customer keys once and store only their hash.</li>
+              <li>Reject inactive keys and suspended accounts before provider work.</li>
+              <li>Convert token usage into credits and record the transaction.</li>
+              <li>Keep the provider secret in environment configuration.</li>
+            </ul>
+          </section>
+          <section class="case-stack">
+            <h3>System</h3>
+            <p>FastAPI · PostgreSQL / Supabase · OpenAI Responses API · Render</p>
+            <span>API and data integration</span>
+          </section>
+        </div>
+      </article>
+
+      <article class="case case-dark" aria-labelledby="planet-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">02 / INTERACTIVE PRODUCT IMPLEMENTATION</p>
+            <h2 id="planet-title">Planet Console</h2>
+          </div>
+          <p class="case-lede">A local-first command center for reconciling many engineering task returns without removing the human decision point.</p>
+        </div>
+        <figure class="case-media planet-media">
+          <img class="planet-desktop" src="assets/planet-console-workflow.png" alt="Planet Console desktop overview showing linked workflow clusters and operational state" />
+          <img class="planet-mobile" src="assets/planet-console-mobile.png" alt="Planet Console responsive mobile overview" />
+        </figure>
+        <div class="case-detail-grid">
+          <section>
+            <h3>The engineering problem</h3>
+            <p>Batch task results can be matched, missing, blocked, or unsafe to continue. The interface has to preserve those distinctions and produce a useful next packet without silently executing work.</p>
+          </section>
+          <section>
+            <h3>Implementation decisions</h3>
+            <ul>
+              <li>Model dispatch, return, reconciliation, and continuation as separate states.</li>
+              <li>Keep blocked and human-decision results out of automatic continuation.</li>
+              <li>Make complex workflow state readable across spatial and narrow layouts.</li>
+              <li>Verify visual changes with desktop and mobile evidence.</li>
+            </ul>
+          </section>
+          <section class="case-stack">
+            <h3>System</h3>
+            <p>React 19 · TypeScript · React Three Fiber · Three.js · Vite</p>
+            <span>Product workflow and interface</span>
+          </section>
+        </div>
+      </article>
 
       <article class="case case-paid" aria-labelledby="mobile-qa-title">
         <div class="case-heading">
           <div>
-            <p class="case-index">01 / PAID ENGAGEMENT · CLIENT RATED 5.0</p>
+            <p class="case-index">03 / PAID ENGAGEMENT · CLIENT RATED 5.0</p>
             <h2 id="mobile-qa-title">iOS Checkout QA</h2>
           </div>
           <p class="case-lede">An end-to-end mobile test covering registration, identity fields, a sandbox card payment, and a concise evidence handoff.</p>
@@ -103,73 +166,6 @@
             <h3>Coverage</h3>
             <p>iOS · onboarding · form validation · checkout · evidence reporting</p>
             <span>Paid mobile QA delivery</span>
-          </section>
-        </div>
-      </article>
-
-      <article class="case case-light" aria-labelledby="gateway-title">
-        <div class="case-heading">
-          <div>
-            <p class="case-index">02 / SELF-OWNED IMPLEMENTATION</p>
-            <h2 id="gateway-title">AI API Gateway</h2>
-          </div>
-          <p class="case-lede">Controlled model access with customer keys, credit accounting, and a complete usage record.</p>
-        </div>
-        <figure class="case-media gateway-media">
-          <img src="assets/api-gateway-flow.svg" alt="Architecture flow from customer API request through a FastAPI gateway, OpenAI, and PostgreSQL accounting" />
-        </figure>
-        <div class="case-detail-grid">
-          <section>
-            <h3>The engineering problem</h3>
-            <p>A customer-facing AI endpoint needs more than a provider call. Access, account status, available credits, provider usage, and the final transaction must agree before the response is considered complete.</p>
-          </section>
-          <section>
-            <h3>Implementation decisions</h3>
-            <ul>
-              <li>Issue customer keys once and store only their hash.</li>
-              <li>Reject inactive keys and suspended accounts before provider work.</li>
-              <li>Convert token usage into credits and record the transaction.</li>
-              <li>Keep the provider secret in environment configuration.</li>
-            </ul>
-          </section>
-          <section class="case-stack">
-            <h3>System</h3>
-            <p>FastAPI · PostgreSQL / Supabase · OpenAI Responses API · Render</p>
-            <span>API and data integration</span>
-          </section>
-        </div>
-      </article>
-
-      <article class="case case-dark" aria-labelledby="planet-title">
-        <div class="case-heading">
-          <div>
-            <p class="case-index">03 / SELF-OWNED IMPLEMENTATION</p>
-            <h2 id="planet-title">Planet Console</h2>
-          </div>
-          <p class="case-lede">A local-first command center for reconciling many engineering task returns without removing the human decision point.</p>
-        </div>
-        <figure class="case-media planet-media">
-          <img class="planet-desktop" src="assets/planet-console-workflow.png" alt="Planet Console desktop overview showing linked workflow clusters and operational state" />
-          <img class="planet-mobile" src="assets/planet-console-mobile.png" alt="Planet Console responsive mobile overview" />
-        </figure>
-        <div class="case-detail-grid">
-          <section>
-            <h3>The engineering problem</h3>
-            <p>Batch task results can be matched, missing, blocked, or unsafe to continue. The interface has to preserve those distinctions and produce a useful next packet without silently executing work.</p>
-          </section>
-          <section>
-            <h3>Implementation decisions</h3>
-            <ul>
-              <li>Model dispatch, return, reconciliation, and continuation as separate states.</li>
-              <li>Keep blocked and human-decision results out of automatic continuation.</li>
-              <li>Make complex workflow state readable across spatial and narrow layouts.</li>
-              <li>Verify visual changes with desktop and mobile evidence.</li>
-            </ul>
-          </section>
-          <section class="case-stack">
-            <h3>System</h3>
-            <p>React 19 · TypeScript · React Three Fiber · Three.js · Vite</p>
-            <span>Product workflow and interface</span>
           </section>
         </div>
       </article>
