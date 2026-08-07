@@ -6,6 +6,8 @@ const required = [
   'AI API Gateway',
   'Planet Console',
   'Checkout Release Workspace',
+  'iOS Checkout QA',
+  'client rating on a completed paid iOS QA engagement',
   'Full-stack product engineering for difficult existing systems.',
 ];
 

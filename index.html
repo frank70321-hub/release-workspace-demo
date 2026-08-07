@@ -33,6 +33,10 @@
             <a class="primary-action" href="#work">View selected work</a>
             <a class="text-action" href="#contact">Start with the affected workflow <span aria-hidden="true">→</span></a>
           </div>
+          <div class="paid-proof" aria-label="Paid engagement proof">
+            <strong>5.0</strong>
+            <span>client rating on a completed paid iOS QA engagement</span>
+          </div>
         </div>
         <div class="hero-proof" aria-label="Engineering coverage">
           <div class="proof-lead">
@@ -51,15 +55,62 @@
       <section class="work-intro" id="work" aria-labelledby="work-title">
         <p class="eyebrow">SELECTED WORK</p>
         <div>
-          <h2 id="work-title">Three inspectable examples, each built around a real engineering decision.</h2>
-          <p>Self-owned implementations and a clearly labeled demonstration. No invented client outcomes.</p>
+          <h2 id="work-title">Four inspectable examples, from paid delivery to full-stack implementation.</h2>
+          <p>See the workflow, the technical decision, and the handoff behind each result.</p>
         </div>
       </section>
+
+      <article class="case case-paid" aria-labelledby="mobile-qa-title">
+        <div class="case-heading">
+          <div>
+            <p class="case-index">01 / PAID ENGAGEMENT · CLIENT RATED 5.0</p>
+            <h2 id="mobile-qa-title">iOS Checkout QA</h2>
+          </div>
+          <p class="case-lede">An end-to-end mobile test covering registration, identity fields, a sandbox card payment, and a concise evidence handoff.</p>
+        </div>
+        <div class="mobile-qa-visual" role="img" aria-label="iOS checkout test run showing registration, form validation, sandbox payment, and evidence handoff">
+          <div class="qa-device">
+            <div class="device-bar"><span>iOS test run</span><b>COMPLETE</b></div>
+            <ol>
+              <li><span>01</span><div><b>Account setup</b><small>Registration path completed</small></div><em>PASS</em></li>
+              <li><span>02</span><div><b>Identity fields</b><small>Locale and input behavior checked</small></div><em>2 NOTES</em></li>
+              <li><span>03</span><div><b>Sandbox payment</b><small>Transaction submitted without a real charge</small></div><em>PASS</em></li>
+              <li><span>04</span><div><b>Evidence handoff</b><small>Findings and completion record delivered</small></div><em>SENT</em></li>
+            </ol>
+          </div>
+          <aside class="qa-outcome">
+            <span>DELIVERY RESULT</span>
+            <strong>Paid, completed, and reviewed</strong>
+            <p>The client received a reproducible test record instead of a generic "works for me" response.</p>
+            <div><b>5.0 / 5.0</b><small>public client rating</small></div>
+          </aside>
+        </div>
+        <div class="case-detail-grid">
+          <section>
+            <h3>The assignment</h3>
+            <p>Run a real iPhone onboarding and checkout journey, complete the supplied sandbox payment path, and return enough detail for the product team to act on the result.</p>
+          </section>
+          <section>
+            <h3>What was delivered</h3>
+            <ul>
+              <li>Completed registration and checkout on a physical iPhone.</li>
+              <li>Recorded two locale and form-behavior risks during the run.</li>
+              <li>Confirmed the sandbox transaction without using a real card.</li>
+              <li>Returned a structured completion and evidence report.</li>
+            </ul>
+          </section>
+          <section class="case-stack">
+            <h3>Coverage</h3>
+            <p>iOS · onboarding · form validation · checkout · evidence reporting</p>
+            <span>Paid mobile QA delivery</span>
+          </section>
+        </div>
+      </article>
 
       <article class="case case-light" aria-labelledby="gateway-title">
         <div class="case-heading">
           <div>
-            <p class="case-index">01 / SELF-OWNED IMPLEMENTATION</p>
+            <p class="case-index">02 / SELF-OWNED IMPLEMENTATION</p>
             <h2 id="gateway-title">AI API Gateway</h2>
           </div>
           <p class="case-lede">Controlled model access with customer keys, credit accounting, and a complete usage record.</p>
@@ -92,7 +143,7 @@
       <article class="case case-dark" aria-labelledby="planet-title">
         <div class="case-heading">
           <div>
-            <p class="case-index">02 / SELF-OWNED IMPLEMENTATION</p>
+            <p class="case-index">03 / SELF-OWNED IMPLEMENTATION</p>
             <h2 id="planet-title">Planet Console</h2>
           </div>
           <p class="case-lede">A local-first command center for reconciling many engineering task returns without removing the human decision point.</p>
@@ -126,7 +177,7 @@
       <article class="case case-demo" aria-labelledby="release-title">
         <div class="case-heading">
           <div>
-            <p class="case-index">03 / ENGINEERING DEMONSTRATION</p>
+            <p class="case-index">04 / ENGINEERING DEMONSTRATION</p>
             <h2 id="release-title">Checkout Release Workspace</h2>
           </div>
           <p class="case-lede">A small interactive model of the release question that matters: can the normal path and the failure path ship together?</p>
