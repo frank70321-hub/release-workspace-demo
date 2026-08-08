@@ -8,7 +8,9 @@ const required = [
   'Checkout Release Workspace',
   'iOS Checkout QA',
   'client rating on a completed paid iOS QA engagement',
-  'Full-stack product engineering for difficult existing systems.',
+  'I fix broken product flows and finish features that are stuck.',
+  'WHAT YOU CAN HIRE ME FOR',
+  'Choose the result you need.',
 ];
 
 const forbidden = [
