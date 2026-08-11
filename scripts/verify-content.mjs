@@ -11,6 +11,7 @@ const required = [
   'I fix broken product flows and finish features that are stuck.',
   'WHAT YOU CAN HIRE ME FOR',
   'Choose the result you need.',
+  'Review a complete isolation record',
 ];
 
 const forbidden = [

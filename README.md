@@ -25,6 +25,10 @@ Excluded from the public case: private repository links, local filesystem paths,
 
 This is an engineering demonstration built directly in this public repository with semantic HTML, CSS, and native JavaScript. It is not described as React, Vite, or client work.
 
+### Duplicate Checkout Submission Isolation
+
+The dedicated `issue-isolation.html` page documents a self-owned engineering proof for a concurrent checkout-submission defect. The accompanying Node.js test fixture reproduces the duplicate side effect, verifies the in-flight request boundary, and verifies clean retry behavior after a failed charge. It is not presented as client or production work.
+
 ## Verification
 
 Run the factual-copy gate:

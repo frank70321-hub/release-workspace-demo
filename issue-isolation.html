@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="An inspectable issue-isolation record for a duplicate checkout submission, including reproduction, failure boundary, fix, and regression evidence." />
+    <title>Duplicate Checkout Submission | Issue Isolation Record</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="issue-isolation.css?v=20260812-1" />
+  </head>
+  <body>
+    <header class="report-header">
+      <a class="brand" href="index.html" aria-label="Return to Yeh I. Product Engineering">
+        <span class="brand-mark">YI</span>
+        <span>Yeh I. / Product Engineering</span>
+      </a>
+      <a class="back-link" href="index.html#capabilities">Back to capabilities</a>
+    </header>
+
+    <main>
+      <section class="report-hero" aria-labelledby="report-title">
+        <div>
+          <p class="eyebrow">SELF-OWNED ENGINEERING PROOF · ISSUE ISOLATION</p>
+          <h1 id="report-title">Duplicate checkout submission</h1>
+          <p class="hero-summary">Two near-simultaneous checkout actions could cross the payment boundary before the interface reflected its busy state. This record shows the reproduction, failure boundary, focused correction, and regression evidence.</p>
+        </div>
+        <dl class="report-status" aria-label="Isolation result">
+          <div><dt>Scope</dt><dd>One checkout boundary</dd></div>
+          <div><dt>Finding</dt><dd>Concurrent side effect</dd></div>
+          <div><dt>Decision</dt><dd>Share one in-flight request</dd></div>
+          <div><dt>Verification</dt><dd class="pass">2 / 2 checks passed</dd></div>
+        </dl>
+      </section>
+
+      <section class="boundary-flow" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">FAILURE BOUNDARY</p>
+          <h2 id="boundary-title">The side effect began before duplicate intent was contained.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><strong>First submit</strong><small>Payment request starts</small></li>
+          <li><span>02</span><strong>Second submit</strong><small>Same cart arrives while pending</small></li>
+          <li class="failure"><span>03</span><strong>Unprotected boundary</strong><small>A second charge can start</small></li>
+          <li class="fixed"><span>04</span><strong>In-flight lock</strong><small>Both callers share one result</small></li>
+        </ol>
+      </section>
+
+      <section class="findings" aria-labelledby="findings-title">
+        <div class="section-heading">
+          <p class="eyebrow">DIAGNOSIS</p>
+          <h2 id="findings-title">What changed the outcome</h2>
+        </div>
+        <div class="finding-grid">
+          <article>
+            <span>Observed</span>
+            <h3>Duplicate intent reached the gateway</h3>
+            <p>UI-only disabling is too late when two calls enter before the pending state is rendered. The test sends both calls during the same in-flight window.</p>
+          </article>
+          <article>
+            <span>Root cause</span>
+            <h3>No canonical request state per cart</h3>
+            <p>The checkout boundary had no shared record of an active charge. Each caller could create its own promise and side effect.</p>
+          </article>
+          <article>
+            <span>Correction</span>
+            <h3>Register before invoking the gateway</h3>
+            <p>The controller stores the request promise by cart ID before the charge begins, returns it to duplicates, and clears it in a finalizer.</p>
+          </article>
+          <article>
+            <span>Residual risk</span>
+            <h3>Server idempotency still belongs in production</h3>
+            <p>This client boundary contains concurrent calls in one runtime. A real payment API should also enforce a server-side idempotency key across retries and devices.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="evidence" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <p class="eyebrow">VERIFICATION EVIDENCE</p>
+          <h2 id="evidence-title">Acceptance checks are executable</h2>
+          <p>Run with Node.js only. No application framework, payment credentials, or external service is required.</p>
+        </div>
+        <div class="evidence-layout">
+          <div class="terminal" aria-label="Passing Node.js test output">
+            <div class="terminal-bar"><span>checkout-controller.test.mjs</span><b>PASS</b></div>
+            <pre><code>$ node --test issue-isolation-proof/checkout-controller.test.mjs
+
+✔ concurrent submissions for the same cart create one charge
+✔ a failed charge releases the cart for a clean retry
+
+tests 2   pass 2   fail 0</code></pre>
+          </div>
+          <div class="acceptance">
+            <h3>Acceptance conditions</h3>
+            <ul>
+              <li>Two concurrent calls for one cart invoke the gateway once.</li>
+              <li>Both callers receive the same successful charge result.</li>
+              <li>A failed request releases the cart for a later retry.</li>
+              <li>No payment secret or external account is used.</li>
+            </ul>
+            <a href="https://github.com/frank70321-hub/release-workspace-demo/tree/main/issue-isolation-proof">Inspect the test and implementation on GitHub <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="handoff" aria-labelledby="handoff-title">
+        <p class="eyebrow">BUYER HANDOFF</p>
+        <h2 id="handoff-title">A paid issue-isolation engagement returns this decision structure for your actual workflow.</h2>
+        <p>Provide the affected workflow and repository or staging access. The output is a reproduction record, failure boundary, implementation path, acceptance condition, and the regression path that matters.</p>
+        <a href="https://www.upwork.com/freelancers/~01944f1fbb4e712837">Open Upwork profile</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>Yeh I. / Product Engineering</span>
+      <span>Reproduction · Boundary · Decision · Verification</span>
+    </footer>
+  </body>
+</html>

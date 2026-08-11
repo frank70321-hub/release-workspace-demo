@@ -206,6 +206,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--teal-light); ou
 .capability-grid span { color: var(--red); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.7rem; font-weight: 800; }
 .capability-grid h3 { margin: 50px 0 12px; font-size: 1.12rem; }
 .capability-grid p { margin: 0; color: var(--muted); font-size: 0.82rem; }
+.capability-proof-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; color: var(--teal); font-size: 0.75rem; font-weight: 780; text-decoration: none; }
+.capability-proof-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.capability-proof-link span { color: var(--red); }
 
 .delivery { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 8vw; padding: 92px 7vw; color: #f5f8f7; background: var(--night); }
 .delivery .eyebrow { color: var(--teal-light); }
