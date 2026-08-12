@@ -30,3 +30,11 @@ test('documents a CI workflow that runs policy and public-content checks', async
   assert.match(workflow, /node scripts\/verify-content\.mjs/);
   assert.match(workflow, /pull_request:/);
 });
+
+test('keeps the dependency-free portfolio on Vercel static hosting', async () => {
+  const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+
+  assert.equal(config.buildCommand, null);
+  assert.equal(config.outputDirectory, '.');
+  assert.equal(config.framework, null);
+});
