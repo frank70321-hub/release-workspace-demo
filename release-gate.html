@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A self-owned engineering proof for a pull-request release gate that blocks missing, failed, pending, and stale-commit verification." />
+    <title>PR Release Gate | Engineering Proof</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="issue-isolation.css?v=20260812-2" />
+  </head>
+  <body>
+    <header class="report-header">
+      <a class="brand" href="index.html" aria-label="Return to Yeh I. Product Engineering">
+        <span class="brand-mark">YI</span>
+        <span>Yeh I. / Product Engineering</span>
+      </a>
+      <a class="back-link" href="index.html#capabilities">Back to capabilities</a>
+    </header>
+
+    <main>
+      <section class="report-hero" aria-labelledby="report-title">
+        <div>
+          <p class="eyebrow">SELF-OWNED ENGINEERING PROOF · CI / RELEASE</p>
+          <h1 id="report-title">PR Release Gate</h1>
+          <p class="hero-summary">A pull request reaches staging only when typecheck, unit, Playwright, and build evidence all pass for the exact candidate commit. Missing, pending, failed, or stale results return an explicit hold decision.</p>
+        </div>
+        <dl class="report-status" aria-label="Release-gate result">
+          <div><dt>Candidate</dt><dd>8f31c2a</dd></div>
+          <div><dt>Required checks</dt><dd>typecheck · unit · playwright · build</dd></div>
+          <div><dt>Decision</dt><dd class="pass">RELEASE</dd></div>
+          <div><dt>Policy verification</dt><dd class="pass">4 / 4 policy checks passed</dd></div>
+        </dl>
+      </section>
+
+      <section class="boundary-flow" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">ONE COMMIT · FOUR CHECKS</p>
+          <h2 id="boundary-title">Green is valid only when every result belongs to the candidate.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><strong>typecheck</strong><small>Syntax and type boundary</small></li>
+          <li><span>02</span><strong>unit</strong><small>Policy and business behavior</small></li>
+          <li><span>03</span><strong>playwright</strong><small>Desktop and mobile workflow</small></li>
+          <li class="fixed"><span>04</span><strong>build</strong><small>Public-content gate</small></li>
+        </ol>
+      </section>
+
+      <section class="findings" aria-labelledby="findings-title">
+        <div class="section-heading">
+          <p class="eyebrow">FAIL-CLOSED POLICY</p>
+          <h2 id="findings-title">The gate explains why it stopped.</h2>
+        </div>
+        <div class="finding-grid">
+          <article><span>Missing</span><h3>No silent skip</h3><p>If any required check is absent, the decision records the missing check and remains on hold.</p></article>
+          <article><span>Failed or pending</span><h3>No premature staging</h3><p>A failed or unfinished result remains a blocker even when every other check is green.</p></article>
+          <article><span>Stale commit</span><h3>No borrowed green result</h3><p>A passed check from an earlier commit cannot approve the current candidate.</p></article>
+          <article><span>Handoff</span><h3>One release decision</h3><p>The returned decision includes the verified commit and a concrete blocker list for the reviewer.</p></article>
+        </div>
+      </section>
+
+      <section class="evidence" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <p class="eyebrow">EXECUTABLE EVIDENCE</p>
+          <h2 id="evidence-title">Policy, browser check, and CI configuration are inspectable.</h2>
+          <p>The repository contains the decision function, four policy tests, a responsive Playwright check, and a GitHub Actions workflow.</p>
+        </div>
+        <div class="evidence-layout">
+          <div class="terminal" aria-label="Passing release-gate test output">
+            <div class="terminal-bar"><span>release-policy.test.mjs</span><b>PASS</b></div>
+            <pre><code>$ node --test release-gate-proof/release-policy.test.mjs
+
+✔ all required checks passed for the candidate commit
+✔ missing Playwright check blocks staging
+✔ failed and pending checks return explicit blockers
+✔ stale commit result cannot approve the candidate
+
+tests 4   pass 4   fail 0</code></pre>
+          </div>
+          <div class="acceptance">
+            <h3>Acceptance conditions</h3>
+            <ul>
+              <li>Only the four required check names can satisfy the policy.</li>
+              <li>Every result must match the candidate commit.</li>
+              <li>The responsive page is checked in desktop and mobile Chromium.</li>
+              <li>Public copy is checked for required evidence and unsupported claims.</li>
+            </ul>
+            <a href="https://github.com/frank70321-hub/release-workspace-demo/tree/main/release-gate-proof">Inspect the policy and tests on GitHub <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="handoff" aria-labelledby="handoff-title">
+        <p class="eyebrow">BUYER HANDOFF</p>
+        <h2 id="handoff-title">A CI engagement returns the checks, branch gate, failure evidence, and written release path for your repository.</h2>
+        <p>Provide the repository and current deploy path. The first bounded step maps the release boundary, installs the agreed checks, proves one blocked and one passing pull request, and returns the operating notes.</p>
+        <a href="https://www.upwork.com/freelancers/~01944f1fbb4e712837">Open Upwork profile</a>
+      </section>
+    </main>
+
+    <footer><span>Yeh I. / Product Engineering</span><span>Typecheck · Unit · Playwright · Build</span></footer>
+  </body>
+</html>

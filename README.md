@@ -29,6 +29,10 @@ This is an engineering demonstration built directly in this public repository wi
 
 The dedicated `issue-isolation.html` page documents a self-owned engineering proof for a concurrent checkout-submission defect. The accompanying Node.js test fixture reproduces the duplicate side effect, verifies the in-flight request boundary, and verifies clean retry behavior after a failed charge. It is not presented as client or production work.
 
+### PR Release Gate
+
+The dedicated `release-gate.html` page documents a self-owned CI/release proof. The policy requires typecheck, unit, Playwright, and build results for the exact candidate commit, and fails closed for missing, pending, failed, or stale evidence. The repository includes policy tests, a responsive browser check, and the GitHub Actions workflow.
+
 ## Verification
 
 Run the factual-copy gate:

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+const releaseGateHtml = await readFile(new URL('../release-gate.html', import.meta.url), 'utf8');
 
 const required = [
   'AI API Gateway',
@@ -12,6 +13,7 @@ const required = [
   'WHAT YOU CAN HIRE ME FOR',
   'Choose the result you need.',
   'Review a complete isolation record',
+  'Inspect the PR release gate',
 ];
 
 const forbidden = [
@@ -28,7 +30,7 @@ for (const phrase of required) {
 }
 
 for (const phrase of forbidden) {
-  if (html.toLowerCase().includes(phrase.toLowerCase())) {
+  if (`${html}\n${releaseGateHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
     failures.push(`Forbidden public claim: ${phrase}`);
   }
 }

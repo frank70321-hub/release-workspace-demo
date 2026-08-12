@@ -1,0 +1,15 @@
+{
+  "name": "release-workspace-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "node --check release-gate-proof/release-policy.mjs",
+    "test:unit": "node --test release-gate-proof/*.test.mjs",
+    "test:e2e": "playwright test",
+    "build": "node scripts/verify-content.mjs",
+    "verify": "npm run typecheck && npm run test:unit && npm run test:e2e && npm run build"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
+  }
+}
