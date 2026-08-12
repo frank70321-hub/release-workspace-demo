@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const releaseGateHtml = await readFile(new URL('../release-gate.html', import.meta.url), 'utf8');
+const investorPackHtml = await readFile(new URL('../investor-pack-auditor.html', import.meta.url), 'utf8');
 
 const required = [
   'AI API Gateway',
@@ -14,6 +15,16 @@ const required = [
   'Choose the result you need.',
   'Review a complete isolation record',
   'Inspect the PR release gate',
+  'Inspect the fictional investor-pack consistency audit.',
+];
+
+const investorPackRequired = [
+  'Six inconsistencies found before the investor meeting',
+  'Fictional direct proof',
+  'Summary!B5',
+  'Slide 2',
+  '13.0 months',
+  'does not provide investment advice',
 ];
 
 const forbidden = [
@@ -29,8 +40,12 @@ for (const phrase of required) {
   if (!html.includes(phrase)) failures.push(`Missing required phrase: ${phrase}`);
 }
 
+for (const phrase of investorPackRequired) {
+  if (!investorPackHtml.includes(phrase)) failures.push(`Missing investor-pack proof phrase: ${phrase}`);
+}
+
 for (const phrase of forbidden) {
-  if (`${html}\n${releaseGateHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
+  if (`${html}\n${releaseGateHtml}\n${investorPackHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
     failures.push(`Forbidden public claim: ${phrase}`);
   }
 }

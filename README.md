@@ -33,6 +33,10 @@ The dedicated `issue-isolation.html` page documents a self-owned engineering pro
 
 The dedicated `release-gate.html` page documents a self-owned CI/release proof. The policy requires typecheck, unit, Playwright, and build results for the exact candidate commit, and fails closed for missing, pending, failed, or stale evidence. The repository includes policy tests, a responsive browser check, and the GitHub Actions workflow.
 
+### Investor Pack Auditor
+
+The dedicated `investor-pack-auditor.html` page is a fictional direct-proof case for a bounded XLSX and PPTX consistency audit. It shows six traceable findings with exact cells, slides, visible arithmetic, and professional-services limitations. It contains no client data and is not presented as paid work.
+
 ## Verification
 
 Run the factual-copy gate:

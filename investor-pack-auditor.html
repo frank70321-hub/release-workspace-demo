@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investor Pack Auditor | Fictional Direct Proof</title>
+  <meta name="description" content="A fictional XLSX and PPTX consistency audit with six traceable findings.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15191d;
+      --muted: #5d6670;
+      --paper: #ffffff;
+      --wash: #f3f5f7;
+      --rule: #d5dbe1;
+      --blue: #1769e0;
+      --blue-pale: #e8f1ff;
+      --amber: #9a4a0a;
+      --amber-pale: #fff1df;
+      --green: #17633b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.5;
+    }
+    a { color: var(--blue); }
+    .topbar { border-bottom: 1px solid var(--rule); }
+    .topbar-inner, main, footer { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar-inner { height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { color: var(--ink); font-weight: 760; text-decoration: none; }
+    .brand:hover { color: var(--blue); }
+    .case-label { color: var(--muted); font-size: 14px; }
+    .intro { padding: 54px 0 34px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 44px; align-items: start; }
+    h1 { margin: 0 0 18px; max-width: 760px; font-size: 48px; line-height: 1.08; letter-spacing: 0; }
+    .lede { margin: 0 0 24px; max-width: 660px; color: var(--muted); font-size: 19px; }
+    .result-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--rule); }
+    .result { padding: 18px; border-right: 1px solid var(--rule); }
+    .result:last-child { border-right: 0; }
+    .result strong { display: block; font-size: 28px; }
+    .result span { color: var(--muted); font-size: 13px; }
+    .evidence-pair { display: grid; gap: 10px; }
+    .evidence-pair img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); background: var(--wash); }
+    .caption { color: var(--muted); font-size: 13px; }
+    .band { padding: 42px 0; border-top: 1px solid var(--rule); }
+    .band.soft { background: var(--wash); }
+    .band-inner { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .section-head { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 24px; }
+    h2 { margin: 0; font-size: 30px; letter-spacing: 0; }
+    .section-head p { margin: 0; max-width: 620px; color: var(--muted); }
+    .findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .finding { min-height: 245px; padding: 20px; background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--amber); border-radius: 6px; }
+    .finding.high { border-top-color: #b0362f; }
+    .finding header { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .finding h3 { margin: 20px 0 12px; font-size: 20px; }
+    .observations, .calculation { margin: 0 0 12px; font-size: 14px; }
+    .calculation { padding: 10px 12px; background: var(--blue-pale); color: #183f73; }
+    .locations { margin: 0; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    .comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .comparison figure { margin: 0; }
+    .comparison img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+    .comparison figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .method { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--rule); }
+    .method div { padding: 20px; border-right: 1px solid var(--rule); }
+    .method div:last-child { border-right: 0; }
+    .method strong { display: block; margin-bottom: 8px; color: var(--blue); }
+    .limit { margin-top: 24px; padding: 18px 20px; background: var(--amber-pale); border-left: 4px solid var(--amber); }
+    footer { padding: 28px 0 42px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 860px) {
+      .intro, .comparison { grid-template-columns: 1fr; }
+      .findings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .method { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .method div:nth-child(2) { border-right: 0; }
+      .method div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    }
+    @media (max-width: 560px) {
+      .topbar-inner, main, footer, .band-inner { width: min(100% - 24px, 1180px); }
+      .topbar-inner { align-items: flex-start; height: auto; padding: 13px 0; flex-direction: column; gap: 2px; }
+      .intro { padding-top: 34px; gap: 28px; }
+      h1 { font-size: 36px; }
+      .result-strip, .findings, .method { grid-template-columns: 1fr; }
+      .result { border-right: 0; border-bottom: 1px solid var(--rule); }
+      .result:last-child { border-bottom: 0; }
+      .method div { border-right: 0; border-bottom: 1px solid var(--rule); }
+      .method div:last-child { border-bottom: 0; }
+      .section-head { align-items: start; flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Investor Pack Auditor</a>
+      <a class="case-label" href="index.html#work">Fictional direct proof · back to portfolio</a>
+    </div>
+  </header>
+  <main>
+    <section class="intro" aria-label="Audit result overview">
+      <div>
+        <h1>Six inconsistencies found before the investor meeting</h1>
+        <p class="lede">A traceable review of one fictional operating model and its companion deck. Every result points back to a sheet cell or slide.</p>
+        <div class="result-strip" aria-label="Audit summary">
+          <div class="result"><strong>6</strong><span>traceable findings</span></div>
+          <div class="result"><strong>3</strong><span>high-severity conflicts</span></div>
+          <div class="result"><strong>2 files</strong><span>XLSX + PPTX reviewed</span></div>
+        </div>
+      </div>
+      <div class="evidence-pair">
+        <img src="assets/investor-pack-auditor/workbook-summary.png" alt="Fictional operating model summary showing ARR, margin, cash, burn and derived checks">
+        <div class="caption">Operating model: internally consistent values and formulas.</div>
+      </div>
+    </section>
+  </main>
+
+  <section class="band soft" aria-label="Traceable findings">
+    <div class="band-inner">
+      <div class="section-head">
+        <h2>Reconciliation register</h2>
+        <p>Headline conflicts first, then arithmetic, reporting-period and support issues. The audit does not infer missing explanations.</p>
+      </div>
+      <div class="findings">
+        
+      <article class="finding high">
+        <header>
+          <span class="finding-id">F-001</span>
+          <span class="severity">HIGH</span>
+        </header>
+        <h3>ARR</h3>
+        <p class="observations">1050000 at fictional-saas-model.xlsx Summary!B5<br>$1.20m at fictional-investor-deck.pptx Slide 2</p>
+        <p class="calculation">Observed 1.05e+06 versus 1.2e+06 for ARR.</p>
+        <p class="locations">Summary!B5 · Slide 2</p>
+      </article>
+    
+
+      <article class="finding high">
+        <header>
+          <span class="finding-id">F-002</span>
+          <span class="severity">HIGH</span>
+        </header>
+        <h3>Gross margin</h3>
+        <p class="observations">72.0% at fictional-saas-model.xlsx Summary!B8<br>78.0% at fictional-investor-deck.pptx Slide 2</p>
+        <p class="calculation">Observed 0.72 versus 0.78 for gross margin.</p>
+        <p class="locations">Summary!B8 · Slide 2</p>
+      </article>
+    
+
+      <article class="finding high">
+        <header>
+          <span class="finding-id">F-003</span>
+          <span class="severity">HIGH</span>
+        </header>
+        <h3>Runway after hiring</h3>
+        <p class="observations">18 months at fictional-investor-deck.pptx Slide 3<br>1800000 at fictional-saas-model.xlsx Summary!B9<br>100000 at fictional-saas-model.xlsx Summary!B10<br>500000 at fictional-saas-model.xlsx Summary!B11</p>
+        <p class="calculation">(Cash 1,800,000 - planned hiring 500,000) / monthly burn 100,000 = 13.0 months.</p>
+        <p class="locations">Slide 3 · Summary!B9 · Summary!B10 · Summary!B11</p>
+      </article>
+    
+
+      <article class="finding medium">
+        <header>
+          <span class="finding-id">F-004</span>
+          <span class="severity">MEDIUM</span>
+        </header>
+        <h3>Period-over-period growth</h3>
+        <p class="observations">40.0% at fictional-investor-deck.pptx Slide 4<br>100000 at fictional-saas-model.xlsx Summary!B12<br>120000 at fictional-saas-model.xlsx Summary!B13</p>
+        <p class="calculation">(120,000 / 100,000) - 1 = 20.0%.</p>
+        <p class="locations">Slide 4 · Summary!B12 · Summary!B13</p>
+      </article>
+    
+
+      <article class="finding medium">
+        <header>
+          <span class="finding-id">F-005</span>
+          <span class="severity">MEDIUM</span>
+        </header>
+        <h3>Reporting period</h3>
+        <p class="observations">through June 2026 at fictional-investor-deck.pptx Slide 5<br>2026-07 at fictional-saas-model.xlsx Summary!B14</p>
+        <p class="calculation">Deck period 2026-06 does not match model period 2026-07.</p>
+        <p class="locations">Slide 5 · Summary!B14</p>
+      </article>
+    
+
+      <article class="finding medium">
+        <header>
+          <span class="finding-id">F-006</span>
+          <span class="severity">MEDIUM</span>
+        </header>
+        <h3>Market-size claim</h3>
+        <p class="observations">TAM is $5B at fictional-investor-deck.pptx Slide 6</p>
+        <p class="calculation">No dated source or calculation basis is visible with the market-size claim.</p>
+        <p class="locations">Slide 6</p>
+      </article>
+    
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Before and after evidence">
+    <div class="band-inner">
+      <div class="section-head">
+        <h2>Source evidence</h2>
+        <p>The deck claims 40% growth while its own visible revenue points move from $100k to $120k, which calculates to 20%.</p>
+      </div>
+      <div class="comparison">
+        <figure>
+          <img src="assets/investor-pack-auditor/deck-slide-02.png" alt="Fictional investor deck headline showing ARR 1.20 million dollars and gross margin 78 percent">
+          <figcaption>Deck: ARR and gross-margin headlines conflict with model cells.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/investor-pack-auditor/deck-slide-04.png" alt="Fictional investor deck growth slide showing a 40 percent claim and revenue moving from 100 thousand to 120 thousand dollars">
+          <figcaption>Deck: 40% headline versus 20% visible arithmetic.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band soft" aria-label="Audit method and limits">
+    <div class="band-inner">
+      <div class="section-head">
+        <h2>Bounded audit method</h2>
+        <p>Designed for a pre-meeting check, not a professional opinion.</p>
+      </div>
+      <div class="method">
+        <div><strong>1. Extract</strong>Preserve file, slide, sheet, cell and formula locations.</div>
+        <div><strong>2. Normalize</strong>Compare named metrics, units and reporting periods.</div>
+        <div><strong>3. Recalculate</strong>Use only visible operands and show the arithmetic.</div>
+        <div><strong>4. Correct</strong>Separate supported fixes from owner decisions.</div>
+      </div>
+      <p class="limit">This is a document-consistency and decision-support review. It does not provide investment advice, accounting certification, tax or legal conclusions, valuation opinions, or fundraising guarantees. Confirm material corrections with the responsible finance, legal, tax, or investment professional.</p>
+    </div>
+  </section>
+
+  <footer>Fictional demonstration generated for service validation. No real company or client information is used.</footer>
+</body>
+</html>
