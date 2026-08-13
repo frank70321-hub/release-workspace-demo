@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M&amp;A Model QA | Fictional Direct Proof</title>
+  <meta name="description" content="A fictional, inspectable M&A model review with source tracing, debt tie-outs, scenario checks, and a downloadable workbook.">
+  <style>
+    :root { color-scheme: light; --ink:#171a1f; --muted:#626b75; --paper:#fff; --wash:#f3f5f7; --rule:#d5dbe1; --navy:#142b4a; --blue:#1769e0; --red:#9c1f18; --red-pale:#fbe5e3; --amber:#8a480e; --amber-pale:#fff0dc; --green:#17633b; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; letter-spacing:0; line-height:1.5; }
+    a { color:var(--blue); }
+    .topbar { border-bottom:1px solid var(--rule); }
+    .topbar-inner, main, .band-inner, footer { width:min(1180px,calc(100% - 40px)); margin:0 auto; }
+    .topbar-inner { min-height:58px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { color:var(--ink); font-weight:760; text-decoration:none; }
+    .case-label { color:var(--muted); font-size:14px; }
+    .intro { padding:52px 0 36px; display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:44px; align-items:start; }
+    h1 { margin:0 0 18px; font-size:48px; line-height:1.08; letter-spacing:0; }
+    .lede { margin:0 0 24px; color:var(--muted); font-size:19px; max-width:660px; }
+    .result-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--rule); }
+    .result { padding:18px; border-right:1px solid var(--rule); }
+    .result:last-child { border-right:0; }
+    .result strong { display:block; font-size:28px; }
+    .result span { color:var(--muted); font-size:13px; }
+    .proof img { width:100%; height:auto; display:block; border:1px solid var(--rule); }
+    .caption { margin-top:8px; color:var(--muted); font-size:13px; }
+    .band { padding:42px 0; border-top:1px solid var(--rule); }
+    .band.soft { background:var(--wash); }
+    .section-head { display:flex; justify-content:space-between; gap:30px; align-items:end; margin-bottom:24px; }
+    h2 { margin:0; font-size:30px; }
+    .section-head p { margin:0; color:var(--muted); max-width:620px; }
+    .findings { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .finding { padding:20px; background:var(--paper); border:1px solid var(--rule); border-top:4px solid var(--amber); border-radius:6px; }
+    .finding.high { border-top-color:var(--red); }
+    .finding header { display:flex; justify-content:space-between; color:var(--muted); font-size:12px; font-weight:750; }
+    .finding h3 { margin:18px 0 10px; font-size:20px; }
+    .finding p { margin:0 0 10px; font-size:14px; }
+    .delta { padding:10px 12px; background:var(--red-pale); color:#71201c; }
+    .location { color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+    .method { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:1px solid var(--rule); }
+    .method div { padding:20px; border-right:1px solid var(--rule); }
+    .method div:last-child { border-right:0; }
+    .method strong { display:block; margin-bottom:8px; color:var(--blue); }
+    .download { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+    .download a { display:inline-flex; align-items:center; min-height:42px; padding:0 16px; color:#fff; background:var(--navy); text-decoration:none; font-weight:700; border-radius:6px; }
+    .download span { color:var(--muted); font-size:13px; }
+    .limit { margin-top:24px; padding:18px 20px; background:var(--amber-pale); border-left:4px solid var(--amber); }
+    footer { padding:28px 0 42px; color:var(--muted); font-size:13px; }
+    @media (max-width:860px) { .intro { grid-template-columns:1fr; } .method { grid-template-columns:repeat(2,minmax(0,1fr)); } .method div:nth-child(2) { border-right:0; } .method div:nth-child(-n+2) { border-bottom:1px solid var(--rule); } }
+    @media (max-width:560px) { .topbar-inner, main, .band-inner, footer { width:min(100% - 24px,1180px); } .topbar-inner { align-items:flex-start; flex-direction:column; padding:13px 0; gap:2px; } h1 { font-size:36px; } .result-strip,.findings,.method { grid-template-columns:1fr; } .result,.method div { border-right:0; border-bottom:1px solid var(--rule); } .result:last-child,.method div:last-child { border-bottom:0; } .section-head { align-items:start; flex-direction:column; gap:10px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">M&amp;A Model QA</a>
+      <a class="case-label" href="index.html#work">Fictional direct proof · back to portfolio</a>
+    </div>
+  </header>
+  <main>
+    <section class="intro" aria-label="M&A model QA result overview">
+      <div>
+        <h1>Two decision-critical model errors isolated before lender delivery</h1>
+        <p class="lede">A fictional acquisition-model review showing exact source references, debt-schedule reconciliation, scenario checks, and release acceptance tests.</p>
+        <div class="result-strip">
+          <div class="result"><strong>4</strong><span>traceable issues</span></div>
+          <div class="result"><strong>2</strong><span>high severity</span></div>
+          <div class="result"><strong>0</strong><span>formula-error values</span></div>
+        </div>
+        <div class="download">
+          <a href="assets/mna-model-qa/fictional-mna-model-qa.xlsx" download>Download the fictional workbook</a>
+          <span>Inspectable formulas, source IDs, checks, and audit register.</span>
+        </div>
+      </div>
+      <figure class="proof">
+        <img src="assets/mna-model-qa/summary.png" alt="Fictional M&A model QA summary showing two failed controls and two passing controls">
+        <figcaption class="caption">Review summary: the debt commitment is $200k below the lender term sheet and 2027 interest is $40k above the debt schedule.</figcaption>
+      </figure>
+    </section>
+  </main>
+  <section class="band soft">
+    <div class="band-inner">
+      <div class="section-head">
+        <h2>Ranked exception register</h2>
+        <p>Every finding states the observed value, expected value, exact workbook location, fix, and acceptance condition.</p>
+      </div>
+      <div class="findings">
+        <article class="finding high"><header><span>F-001</span><span>HIGH</span></header><h3>Interest expense does not tie</h3><p class="delta">$496,000 observed versus $456,000 expected.</p><p>The 2027 P&amp;L formula uses beginning debt instead of average debt.</p><p class="location">Debt Schedule!D10 vs D9</p></article>
+        <article class="finding high"><header><span>F-002</span><span>HIGH</span></header><h3>Debt source conflicts with term sheet</h3><p class="delta">$7.0m in the model versus $7.2m in TERM-01.</p><p>An unsupported $200k override is absorbed by sponsor equity, so sources still appear to balance.</p><p class="location">Acquisition Model!C8 vs Source Documents!E9</p></article>
+        <article class="finding"><header><span>F-003</span><span>MEDIUM</span></header><h3>Scenario path is incomplete</h3><p>The selector reprices EBITDA, but leverage and return outputs are not linked to the selected case.</p><p class="location">Acquisition Model!C14:C16</p></article>
+        <article class="finding"><header><span>F-004</span><span>MEDIUM</span></header><h3>Equity plug masks the variance</h3><p>Calculated sponsor equity moves from $4.3m to $4.5m and hides the unsupported debt-source change.</p><p class="location">Acquisition Model!C8:C10</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="band-inner">
+      <div class="section-head"><h2>Review method</h2><p>Built for a paid test where careful traceability matters more than scanning speed.</p></div>
+      <div class="method">
+        <div><strong>1. Trace</strong>Map hardcoded inputs to source document, page, tab, or line.</div>
+        <div><strong>2. Compare</strong>Find broken copy-across patterns and hidden overrides.</div>
+        <div><strong>3. Reconcile</strong>Tie debt, interest, cash, statements, and sources and uses.</div>
+        <div><strong>4. Exercise</strong>Run each scenario path and define a pass/fail acceptance test.</div>
+      </div>
+      <p class="limit">This fictional example demonstrates model and document QA only. It is not accounting, tax, legal, valuation, lender, or investment advice, and it contains no real client or transaction information.</p>
+    </div>
+  </section>
+  <footer>Fictional demonstration generated for service validation. No real company or client information is used.</footer>
+</body>
+</html>
