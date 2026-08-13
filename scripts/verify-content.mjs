@@ -4,6 +4,7 @@ const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const releaseGateHtml = await readFile(new URL('../release-gate.html', import.meta.url), 'utf8');
 const investorPackHtml = await readFile(new URL('../investor-pack-auditor.html', import.meta.url), 'utf8');
 const mnaModelQaHtml = await readFile(new URL('../mna-model-qa.html', import.meta.url), 'utf8');
+const b2bPortfolioHtml = await readFile(new URL('../b2b-portfolio.html', import.meta.url), 'utf8');
 
 const required = [
   'AI API Gateway',
@@ -17,6 +18,7 @@ const required = [
   'Review a complete isolation record',
   'Inspect the PR release gate',
   'Inspect the fictional investor-pack consistency audit.',
+  'Review the editable portfolio sample',
 ];
 
 const investorPackRequired = [
@@ -34,6 +36,14 @@ const mnaModelQaRequired = [
   '$496,000 observed versus $456,000 expected.',
   'Acquisition Model!C8 vs Source Documents!E9',
   'contains no real client or transaction information',
+];
+
+const b2bPortfolioRequired = [
+  'Complex work, made easy for buyers to trust',
+  'Download the editable PowerPoint',
+  'US$120',
+  'one completed case-study page',
+  'No confidential client material is used',
 ];
 
 const forbidden = [
@@ -57,8 +67,12 @@ for (const phrase of mnaModelQaRequired) {
   if (!mnaModelQaHtml.includes(phrase)) failures.push(`Missing M&A model-QA proof phrase: ${phrase}`);
 }
 
+for (const phrase of b2bPortfolioRequired) {
+  if (!b2bPortfolioHtml.includes(phrase)) failures.push(`Missing B2B portfolio proof phrase: ${phrase}`);
+}
+
 for (const phrase of forbidden) {
-  if (`${html}\n${releaseGateHtml}\n${investorPackHtml}\n${mnaModelQaHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
+  if (`${html}\n${releaseGateHtml}\n${investorPackHtml}\n${mnaModelQaHtml}\n${b2bPortfolioHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
     failures.push(`Forbidden public claim: ${phrase}`);
   }
 }
