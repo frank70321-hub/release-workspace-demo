@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="A sanitized candidate-experience finding for an Alignerr Google sign-in transition, with an observed state trace, evidence boundary, impact, and acceptance checks." />
+    <title>Alignerr Google Sign-In | Candidate Experience Finding</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="issue-isolation.css?v=20260814-1" />
+  </head>
+  <body>
+    <header class="report-header">
+      <a class="brand" href="index.html" aria-label="Return to Yeh I. Product Engineering">
+        <span class="brand-mark">YI</span>
+        <span>Yeh I. / Product Engineering</span>
+      </a>
+      <span class="back-link">Sanitized observation · 14 Aug 2026</span>
+    </header>
+
+    <main>
+      <section class="report-hero" aria-labelledby="report-title">
+        <div>
+          <p class="eyebrow">USER-OBSERVED PRODUCT FINDING · APPLICANT CONVERSION</p>
+          <h1 id="report-title">Google sign-in appeared unresponsive</h1>
+          <p class="hero-summary">The applicant selected Google sign-in and saw no recognizable transition or loading feedback. The same browser tab had advanced to the Google account chooser, and the flow later completed through consent to the Alignerr resume step.</p>
+        </div>
+        <dl class="report-status" aria-label="Finding status">
+          <div><dt>Scope</dt><dd>One applicant sign-in path</dd></div>
+          <div><dt>Observed</dt><dd>Visible feedback missing</dd></div>
+          <div><dt>Authentication</dt><dd class="pass">Completed after account selection</dd></div>
+          <div><dt>Evidence status</dt><dd>Observed once · broader reproduction required</dd></div>
+        </dl>
+      </section>
+
+      <section class="boundary-flow" aria-labelledby="trace-title">
+        <div class="section-heading">
+          <p class="eyebrow">OBSERVED STATE TRACE</p>
+          <h2 id="trace-title">The system advanced, but the applicant could not tell.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Select Google sign-in</strong><small>Applicant starts the authorized OAuth route</small></li>
+          <li class="failure"><span>02</span><strong>No recognizable feedback</strong><small>The click appears to have no effect</small></li>
+          <li><span>03</span><strong>Account chooser confirmed</strong><small>The same tab is already in Google OAuth state</small></li>
+          <li class="fixed"><span>04</span><strong>Resume step reached</strong><small>Consent returns to /application/upload-resume</small></li>
+        </ol>
+      </section>
+
+      <section class="findings" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">EVIDENCE BOUNDARY</p>
+          <h2 id="boundary-title">Facts, risk, and unknowns remain separate.</h2>
+        </div>
+        <div class="finding-grid">
+          <article>
+            <span>Confirmed</span>
+            <h3>OAuth had advanced in the same tab</h3>
+            <p>Live document-state inspection showed the Google account chooser even though the applicant reported no visible response to the click.</p>
+          </article>
+          <article>
+            <span>Confirmed</span>
+            <h3>The authorized route could complete</h3>
+            <p>After account selection, Google requested consent for labelbox-id-platform.com and redirected successfully to the Alignerr resume-upload page.</p>
+          </article>
+          <article>
+            <span>Not established</span>
+            <h3>Root cause and prevalence remain unknown</h3>
+            <p>This observation does not prove whether focus handling, rendering, navigation timing, browser state, or another client condition caused the missing feedback.</p>
+          </article>
+          <article>
+            <span>Conversion risk</span>
+            <h3>The failure occurs before profile completion</h3>
+            <p>An applicant may click repeatedly, refresh, restart, contact support, or abandon before Alignerr receives a resume and completed profile.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="evidence" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <p class="eyebrow">SANITIZED OBSERVATION LOG</p>
+          <h2 id="evidence-title">The evidence supports a feedback defect, not a guessed implementation cause.</h2>
+          <p>No applicant email, account name, token, cookie, identity document, or private OAuth value is included.</p>
+        </div>
+        <div class="evidence-layout">
+          <div class="terminal" aria-label="Sanitized sign-in observation trace">
+            <div class="terminal-bar"><span>applicant-signin.trace</span><b>OBSERVED</b></div>
+            <pre><code>applicant action
+  select: Google sign-in
+
+visible response
+  transition: not recognizable to applicant
+  interpretation: click appeared unresponsive
+
+document state
+  provider: Google account chooser
+  consent target: labelbox-id-platform.com
+  final redirect: /application/upload-resume
+
+classification
+  authentication completion: observed
+  applicant feedback: failed
+  root cause: not established</code></pre>
+          </div>
+          <div class="acceptance">
+            <h3>Fix acceptance checks</h3>
+            <ul>
+              <li>Show a visible pending state within 300 ms of the click.</li>
+              <li>Disable repeated submission while OAuth is pending.</li>
+              <li>Move focus and viewport to the active OAuth content.</li>
+              <li>Return an actionable timeout, blocked-popup, or OAuth error state.</li>
+              <li>Verify one normal and one delayed or blocked transition.</li>
+            </ul>
+            <a href="mailto:frank70321@gmail.com?subject=Applicant%20flow%20audit">Request the complete one-path audit scope <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="handoff" aria-labelledby="handoff-title">
+        <p class="eyebrow">BOUNDED PAID FIRST STEP</p>
+        <h2 id="handoff-title">Audit one applicant path from sign-in through profile completion.</h2>
+        <p>The handoff is a prioritized finding register, exact reproduction evidence, a browser and state matrix, conversion-risk classification, fix acceptance checks, and one written retest. It does not require a broad redesign or a live meeting.</p>
+        <a href="mailto:frank70321@gmail.com?subject=Applicant%20flow%20audit">Commission the applicant-flow audit</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>Yeh I. / Product Engineering</span>
+      <span>Observation · Evidence boundary · Acceptance · Retest</span>
+    </footer>
+  </body>
+</html>

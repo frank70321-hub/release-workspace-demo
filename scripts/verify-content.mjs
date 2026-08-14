@@ -5,6 +5,7 @@ const releaseGateHtml = await readFile(new URL('../release-gate.html', import.me
 const investorPackHtml = await readFile(new URL('../investor-pack-auditor.html', import.meta.url), 'utf8');
 const mnaModelQaHtml = await readFile(new URL('../mna-model-qa.html', import.meta.url), 'utf8');
 const b2bPortfolioHtml = await readFile(new URL('../b2b-portfolio.html', import.meta.url), 'utf8');
+const alignerrSigninHtml = await readFile(new URL('../alignerr-signin-finding.html', import.meta.url), 'utf8');
 
 const required = [
   'AI API Gateway',
@@ -46,6 +47,14 @@ const b2bPortfolioRequired = [
   'No confidential client material is used',
 ];
 
+const alignerrSigninRequired = [
+  'Google sign-in appeared unresponsive',
+  'Observed once · broader reproduction required',
+  'Root cause and prevalence remain unknown',
+  'The evidence supports a feedback defect, not a guessed implementation cause.',
+  'Audit one applicant path from sign-in through profile completion.',
+];
+
 const forbidden = [
   '12 years',
   'client project',
@@ -71,8 +80,12 @@ for (const phrase of b2bPortfolioRequired) {
   if (!b2bPortfolioHtml.includes(phrase)) failures.push(`Missing B2B portfolio proof phrase: ${phrase}`);
 }
 
+for (const phrase of alignerrSigninRequired) {
+  if (!alignerrSigninHtml.includes(phrase)) failures.push(`Missing Alignerr sign-in proof phrase: ${phrase}`);
+}
+
 for (const phrase of forbidden) {
-  if (`${html}\n${releaseGateHtml}\n${investorPackHtml}\n${mnaModelQaHtml}\n${b2bPortfolioHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
+  if (`${html}\n${releaseGateHtml}\n${investorPackHtml}\n${mnaModelQaHtml}\n${b2bPortfolioHtml}\n${alignerrSigninHtml}`.toLowerCase().includes(phrase.toLowerCase())) {
     failures.push(`Forbidden public claim: ${phrase}`);
   }
 }

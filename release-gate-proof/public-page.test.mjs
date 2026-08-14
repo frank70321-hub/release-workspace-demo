@@ -38,3 +38,23 @@ test('keeps the dependency-free portfolio on Vercel static hosting', async () =>
   assert.equal(config.outputDirectory, '.');
   assert.equal(config.framework, null);
 });
+
+test('publishes a bounded applicant-signin finding without exposing private account data', async () => {
+  const html = await readFile(new URL('../alignerr-signin-finding.html', import.meta.url), 'utf8');
+  const required = [
+    'Google sign-in appeared unresponsive',
+    'Observed once · broader reproduction required',
+    'Root cause and prevalence remain unknown',
+    'labelbox-id-platform.com',
+    '/application/upload-resume',
+    'noindex, nofollow',
+    'Bounded paid first step',
+  ];
+
+  for (const phrase of required) {
+    assert.ok(html.toLowerCase().includes(phrase.toLowerCase()), `Missing: ${phrase}`);
+  }
+
+  assert.doesNotMatch(html, /frank70321@gmail\.com[^?]/i);
+  assert.doesNotMatch(html, /guarantee|all applicants|production outage|security vulnerability/i);
+});
